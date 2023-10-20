@@ -43,10 +43,10 @@ const MainSec = styled.section`
 
 const Subtitle = styled.p`
   margin-bottom: 6rem;
-  font-size: 1.4rem;
+  font-size: ${({ theme }) => theme.fontSize.xs};
   font-weight: 400;
   color: ${({ theme }) => theme.color.black};
-  @media ${({ theme }) => theme.display.tablet} {
+  @media ${({ theme }) => theme.tablet} {
     font-size: 1.8rem;
   }
 `;
@@ -72,7 +72,7 @@ const FoodDiv = styled.div`
   }
   font-weight: 800;
   color: ${({ theme }) => theme.color.black};
-  @media ${({ theme }) => theme.display.tablet} {
+  @media ${({ theme }) => theme.tablet} {
     width: 47rem;
     height: 66rem;
     h2 {
@@ -82,7 +82,7 @@ const FoodDiv = styled.div`
       font-size: 6.2rem;
     }
   }
-  @media ${({ theme }) => theme.display.desktop} {
+  @media ${({ theme }) => theme.desktop} {
     width: 92vw;
     max-width: 108.8rem;
     height: 46.4rem;
@@ -107,13 +107,13 @@ const ImgDiv = styled.div`
     width: 18.8rem;
     height: 18.8rem;
   }
-  @media ${({ theme }) => theme.display.tablet} {
+  @media ${({ theme }) => theme.tablet} {
     img {
       width: 25rem;
       height: 25rem;
     }
   }
-  @media ${({ theme }) => theme.display.tablet} {
+  @media ${({ theme }) => theme.desktop} {
     padding: 0 9rem;
     flex-direction: row;
     justify-content: space-between;

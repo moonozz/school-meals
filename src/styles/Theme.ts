@@ -32,6 +32,9 @@ const theme: DefaultTheme = {
   color,
   fontSize,
   display,
+  mobile: `(min-width: ${display.mobile})`,
+  tablet: `(min-width: ${display.tablet})`,
+  desktop: `(min-width: ${display.desktop})`,
 };
 
 export default theme;
