@@ -46,7 +46,7 @@ const Subtitle = styled.p`
   font-size: 1.4rem;
   font-weight: 400;
   color: ${({ theme }) => theme.color.black};
-  @media ${({ theme }) => theme.tablet} {
+  @media ${({ theme }) => theme.display.tablet} {
     font-size: 1.8rem;
   }
 `;
@@ -72,7 +72,7 @@ const FoodDiv = styled.div`
   }
   font-weight: 800;
   color: ${({ theme }) => theme.color.black};
-  @media ${({ theme }) => theme.tablet} {
+  @media ${({ theme }) => theme.display.tablet} {
     width: 47rem;
     height: 66rem;
     h2 {
@@ -82,8 +82,9 @@ const FoodDiv = styled.div`
       font-size: 6.2rem;
     }
   }
-  @media ${({ theme }) => theme.desktop} {
-    width: 102rem;
+  @media ${({ theme }) => theme.display.desktop} {
+    width: 92vw;
+    max-width: 108.8rem;
     height: 46.4rem;
     border-radius: 23.2rem;
     h2 {
@@ -106,13 +107,13 @@ const ImgDiv = styled.div`
     width: 18.8rem;
     height: 18.8rem;
   }
-  @media ${({ theme }) => theme.tablet} {
+  @media ${({ theme }) => theme.display.tablet} {
     img {
       width: 25rem;
       height: 25rem;
     }
   }
-  @media ${({ theme }) => theme.desktop} {
+  @media ${({ theme }) => theme.display.tablet} {
     padding: 0 9rem;
     flex-direction: row;
     justify-content: space-between;

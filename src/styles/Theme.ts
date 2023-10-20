@@ -1,3 +1,5 @@
+import { DefaultTheme } from "styled-components";
+
 const display = {
   mobile: "561px",
   tablet: "769px",
@@ -9,27 +11,27 @@ const color = {
   black: "#000",
   main: "#FFCE6B",
   lightMain: "#F5EDE2",
-  Orange: "FF6D3B",
+  orange: "FF6D3B",
   gray100: "#9B9B9B",
   gray150: "#505050",
 };
 
 const fontSize = {
-  xs: "1.2rem",
-  s: "1.3rem",
-  r: "1.4rem",
-  m: "1.6rem",
+  xs: "1.4rem",
+  s: "1.6rem",
+  r: "1.8rem",
+  m: "2rem",
   l: "2.4rem",
-  xl: "4rem",
 };
 
-const theme = {
+export type ColorsTypes = typeof color;
+export type FontSizeTypes = typeof fontSize;
+export type DisplayTypes = typeof display;
+
+const theme: DefaultTheme = {
   color,
   fontSize,
   display,
-  mobile: `(min-width: ${display.mobile})`,
-  tablet: `(min-width: ${display.tablet})`,
-  desktop: `(min-width: ${display.desktop})`,
 };
 
 export default theme;

@@ -60,7 +60,7 @@ export const GlobalStyle = createGlobalStyle`
 
   .hidden {
     display: none;
-    @media ${({ theme }) => theme.desktop} {
+    @media ${({ theme }) => theme.display.desktop} {
       display: block;
     }
   }
