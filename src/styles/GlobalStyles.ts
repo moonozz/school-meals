@@ -1,11 +1,14 @@
 import { createGlobalStyle } from "styled-components";
+import reset from "styled-reset";
 
 export const GlobalStyle = createGlobalStyle`
+  ${reset}
+  
   html {
     font-size: 62.5%;
     /* over-flow-x: hidden; */
   }
-  body, input {
+  body, input, button {
     font-family: 'GmarketSans', sans-serif;
   }
   body {
@@ -60,7 +63,7 @@ export const GlobalStyle = createGlobalStyle`
 
   .hidden {
     display: none;
-    @media ${({ theme }) => theme.display.desktop} {
+    @media ${({ theme }) => theme.desktop} {
       display: block;
     }
   }
