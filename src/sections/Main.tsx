@@ -72,7 +72,7 @@ const FoodDiv = styled.div`
   }
   font-weight: 800;
   color: ${({ theme }) => theme.color.black};
-  @media ${({ theme }) => theme.tablet} {
+  @media ${({ theme }) => theme.mobile} {
     width: 47rem;
     height: 66rem;
     h2 {
@@ -107,7 +107,7 @@ const ImgDiv = styled.div`
     width: 18.8rem;
     height: 18.8rem;
   }
-  @media ${({ theme }) => theme.tablet} {
+  @media ${({ theme }) => theme.mobile} {
     img {
       width: 25rem;
       height: 25rem;

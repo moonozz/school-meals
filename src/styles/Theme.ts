@@ -11,7 +11,7 @@ const color = {
   black: "#000",
   main: "#FFCE6B",
   lightMain: "#F5EDE2",
-  orange: "FF6D3B",
+  orange: "#FF6D3B",
   gray100: "#9B9B9B",
   gray150: "#505050",
 };

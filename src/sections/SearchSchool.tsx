@@ -22,6 +22,7 @@ function SearchSchool() {
           <li>덕수고등학교</li>
         </ul>
       </Result>
+      <Btn>급식 보기</Btn>
     </SearchSection>
   );
 }
@@ -79,7 +80,7 @@ const Select = styled.div`
 const SelectBox = styled.div`
   background-color: ${({ theme }) => theme.color.white};
   padding: 1.4rem 2.4rem;
-  border-radius: 4rem;
+  border-radius: 3.2rem;
   margin: 0.5rem 0;
   @media ${({ theme }) => theme.tablet} {
     margin: 0.8rem 0;
@@ -89,12 +90,13 @@ const SelectBox = styled.div`
 
 const Search = styled.form`
   display: flex;
+  justify-content: space-between;
   background-color: ${({ theme }) => theme.color.white};
-  border-radius: 4rem;
+  border-radius: 3.2rem;
   margin: 0.5rem 0;
   padding-right: 2.4rem;
   input {
-    width: 80%;
+    width: 70%;
     padding: 1.4rem 2.4rem;
     font-size: ${({ theme }) => theme.fontSize.xs};
   }
@@ -112,8 +114,8 @@ const Search = styled.form`
 const Result = styled.div`
   display: flex;
   background-color: ${({ theme }) => theme.color.white};
-  border-radius: 4rem;
-  margin: 0.5rem 0;
+  border-radius: 3.2rem;
+  margin-top: 1.6rem;
   width: 100%;
   font-size: ${({ theme }) => theme.fontSize.xs};
   ul {
@@ -124,5 +126,19 @@ const Result = styled.div`
   }
   @media ${({ theme }) => theme.tablet} {
     font-size: ${({ theme }) => theme.fontSize.s};
+  }
+`;
+
+const Btn = styled.button`
+  width: 100%;
+  border-radius: 3.2rem;
+  margin-top: 2.4rem;
+  padding: 1.6rem 0%;
+  font-weight: 800;
+  color: ${({ theme }) => theme.color.white};
+  background-color: ${({ theme }) => theme.color.orange};
+  font-size: ${({ theme }) => theme.fontSize.s};
+  @media ${({ theme }) => theme.tablet} {
+    width: 24rem;
   }
 `;
