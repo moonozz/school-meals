@@ -3,7 +3,7 @@ import reset from "styled-reset";
 
 export const GlobalStyle = createGlobalStyle`
   ${reset}
-  
+
   html {
     font-size: 62.5%;
     /* over-flow-x: hidden; */
@@ -59,6 +59,12 @@ export const GlobalStyle = createGlobalStyle`
     border: 0 none;
     margin: 0;
     padding: 0;
+  }
+  input:focus {
+    outline: none;
+  }
+  input::placeholder {
+    color: ${({ theme }) => theme.color.gray100}
   }
 
   .hidden {

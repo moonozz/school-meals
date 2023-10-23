@@ -46,7 +46,7 @@ const Subtitle = styled.p`
   font-size: ${({ theme }) => theme.fontSize.xs};
   font-weight: 400;
   color: ${({ theme }) => theme.color.black};
-  @media ${({ theme }) => theme.tablet} {
+  @media ${({ theme }) => theme.mobile} {
     font-size: 1.8rem;
   }
 `;
