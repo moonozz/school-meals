@@ -6,7 +6,7 @@ function Result() {
     <ResultSection>
       <h4>궁금한 날짜와 지역, 학교를 검색해주세요!</h4>
       <ResultArea>
-        <ul>
+        <MealsUl>
           <Meal>
             <Day>10.01(월)</Day>
             <ul>
@@ -19,7 +19,79 @@ function Result() {
               <li>고구마순볶음</li>
             </ul>
           </Meal>
-        </ul>
+          <Meal>
+            <Day>10.01(월)</Day>
+            <ul>
+              <li>혼합잡곡밥</li>
+              <li>사골떡국</li>
+              <li>제육볶음</li>
+              <li>두부부침&양념장</li>
+              <li>배추겉절이</li>
+              <li>바나나우유</li>
+              <li>고구마순볶음</li>
+            </ul>
+          </Meal>
+          <Meal>
+            <Day>10.01(월)</Day>
+            <ul>
+              <li>혼합잡곡밥</li>
+              <li>사골떡국</li>
+              <li>제육볶음</li>
+              <li>두부부침&양념장</li>
+              <li>배추겉절이</li>
+              <li>바나나우유</li>
+              <li>고구마순볶음</li>
+            </ul>
+          </Meal>
+          <Meal>
+            <Day>10.01(월)</Day>
+            <ul>
+              <li>혼합잡곡밥</li>
+              <li>사골떡국</li>
+              <li>제육볶음</li>
+              <li>두부부침&양념장</li>
+              <li>배추겉절이</li>
+              <li>바나나우유</li>
+              <li>고구마순볶음</li>
+            </ul>
+          </Meal>
+          <Meal>
+            <Day>10.01(월)</Day>
+            <ul>
+              <li>혼합잡곡밥</li>
+              <li>사골떡국</li>
+              <li>제육볶음</li>
+              <li>두부부침&양념장</li>
+              <li>배추겉절이</li>
+              <li>바나나우유</li>
+              <li>고구마순볶음</li>
+            </ul>
+          </Meal>
+          <Meal>
+            <Day>10.01(월)</Day>
+            <ul>
+              <li>혼합잡곡밥</li>
+              <li>사골떡국</li>
+              <li>제육볶음</li>
+              <li>두부부침&양념장</li>
+              <li>배추겉절이</li>
+              <li>바나나우유</li>
+              <li>고구마순볶음</li>
+            </ul>
+          </Meal>
+          <Meal>
+            <Day>10.01(월)</Day>
+            <ul>
+              <li>혼합잡곡밥</li>
+              <li>사골떡국</li>
+              <li>제육볶음</li>
+              <li>두부부침&양념장</li>
+              <li>배추겉절이</li>
+              <li>바나나우유</li>
+              <li>고구마순볶음</li>
+            </ul>
+          </Meal>
+        </MealsUl>
       </ResultArea>
     </ResultSection>
   );
@@ -31,6 +103,8 @@ const ResultSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 4rem 2rem;
+
   h4 {
     font-size: ${({ theme }) => theme.fontSize.r};
     font-weight: 800;
@@ -53,8 +127,14 @@ const ResultArea = styled.div`
   max-width: 120rem;
 `;
 
+const MealsUl = styled.ul`
+  width: 100%;
+  gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(19rem, auto));
+`;
+
 const Meal = styled.li`
-  width: 19rem;
   display: flex;
   align-items: center;
   flex-direction: column;
