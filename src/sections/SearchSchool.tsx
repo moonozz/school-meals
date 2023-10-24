@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Arrow from "../images/arrow.svg";
+// import Arrow from "../images/arrow.svg";
+import { ReactComponent as Arrow } from "../images/arrow.svg";
 
 function SearchSchool() {
   return (
@@ -10,11 +11,13 @@ function SearchSchool() {
         <SelectArea>
           <Select>
             <span>23년 10월</span>
-            <img src={Arrow} alt="select arrow image" />
+            {/* <img src={Arrow} alt="select arrow image" /> */}
+            <Arrow />
           </Select>
           <Select>
             <span>서울특별시</span>
-            <img src={Arrow} alt="select arrow image" />
+            {/* <img src={Arrow} alt="select arrow image" /> */}
+            <Arrow />
           </Select>
         </SelectArea>
         <Search>
@@ -87,6 +90,7 @@ const SelectArea = styled.div`
 const Select = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: ${({ theme }) => theme.color.white};
   padding: 1.4rem 2.4rem;
   border-radius: 3.2rem;
