@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 // import Arrow from "../images/arrow.svg";
 import { ReactComponent as Arrow } from "../images/arrow.svg";
+import Modal from "../components/Modal";
 
 function SearchSchool() {
+  const [modal, setModal] = useState(false);
+
+  const handleModal = () => {
+    setModal(!modal);
+    console.log(modal);
+  };
+
   return (
     <SearchSection>
       <h4>궁금한 날짜와 지역, 학교를 검색해주세요!</h4>
@@ -14,7 +22,7 @@ function SearchSchool() {
             {/* <img src={Arrow} alt="select arrow image" /> */}
             <Arrow />
           </Select>
-          <Select>
+          <Select onClick={handleModal}>
             <span>서울특별시</span>
             {/* <img src={Arrow} alt="select arrow image" /> */}
             <Arrow />
