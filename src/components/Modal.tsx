@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-function Modal() {
+function Modal(props: { onClick: () => void }) {
   return (
     <>
       <ModalDiv>
         <Header>
-          <button>닫기</button>
+          <button onClick={props.onClick}>닫기</button>
         </Header>
         <Content>
           <p>서울특별시</p>

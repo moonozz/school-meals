@@ -12,6 +12,11 @@ function SearchSchool() {
     console.log(modal);
   };
 
+  const modalClose = () => {
+    setModal(false);
+    console.log(modal);
+  };
+
   return (
     <SearchSection>
       <h4>궁금한 날짜와 지역, 학교를 검색해주세요!</h4>
@@ -41,6 +46,7 @@ function SearchSchool() {
         </ul>
       </Result>
       <Btn>급식 보기</Btn>
+      {modal ? <Modal onClick={modalClose} /> : ""}
     </SearchSection>
   );
 }
