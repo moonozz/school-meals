@@ -5,15 +5,24 @@ import { ReactComponent as Arrow } from "../images/arrow.svg";
 import Modal from "../components/Modal";
 
 function SearchSchool() {
-  const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState<boolean>(false);
+  const [dateSelect, setDateSelect] = useState<boolean>(false);
+  const [citySelect, setCitySelect] = useState<boolean>(false);
 
-  const handleModal = () => {
-    setModal(!modal);
+  // const handleModal = () => {
+  //   setModal(!modal);
+  //   console.log(modal);
+  // };
+
+  const handleDateModal = () => {
+    setDateSelect(!dateSelect);
+    setModal(true);
     console.log(modal);
   };
 
-  const modalClose = () => {
-    setModal(false);
+  const handleCityModal = () => {
+    setCitySelect(!citySelect);
+    setModal(true);
     console.log(modal);
   };
 
@@ -22,12 +31,12 @@ function SearchSchool() {
       <h4>궁금한 날짜와 지역, 학교를 검색해주세요!</h4>
       <SearchForm>
         <SelectArea>
-          <Select>
+          <Select onClick={handleDateModal}>
             <span>23년 10월</span>
             {/* <img src={Arrow} alt="select arrow image" /> */}
             <Arrow />
           </Select>
-          <Select onClick={handleModal}>
+          <Select onClick={handleCityModal}>
             <span>서울특별시</span>
             {/* <img src={Arrow} alt="select arrow image" /> */}
             <Arrow />
@@ -46,7 +55,17 @@ function SearchSchool() {
         </ul>
       </Result>
       <Btn>급식 보기</Btn>
-      {modal ? <Modal onClick={modalClose} /> : ""}
+      {modal ? (
+        <Modal
+          setModal={setModal}
+          setDateSelect={setDateSelect}
+          setCitySelect={setCitySelect}
+          dateSelect={dateSelect}
+          citySelect={citySelect}
+        />
+      ) : (
+        ""
+      )}
     </SearchSection>
   );
 }

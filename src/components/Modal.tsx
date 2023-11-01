@@ -1,20 +1,46 @@
-import React from "react";
+import React, { useState, Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
 
-function Modal(props: { onClick: () => void }) {
+interface Props {
+  setModal: Dispatch<SetStateAction<boolean>>;
+  setDateSelect: Dispatch<SetStateAction<boolean>>;
+  setCitySelect: Dispatch<SetStateAction<boolean>>;
+  // modal: boolean;
+  dateSelect: boolean;
+  citySelect: boolean;
+}
+
+function Modal(props: Props) {
+  const modalClose = () => {
+    props.setModal(false);
+    props.setDateSelect(false);
+    props.setCitySelect(false);
+  };
+
   return (
     <>
       <ModalDiv>
         <Header>
-          <button onClick={props.onClick}>닫기</button>
+          <button onClick={modalClose}>닫기</button>
         </Header>
-        <Content>
-          <p>서울특별시</p>
-          <p>서울특별시</p>
-          <p>서울특별시</p>
-          <p>서울특별시</p>
-          <p>서울특별시</p>
-        </Content>
+        {props.dateSelect ? (
+          <Content>
+            <p>dateSelect</p>
+          </Content>
+        ) : (
+          ""
+        )}
+        {props.citySelect ? (
+          <Content>
+            <p>서울특별시</p>
+            <p>서울특별시</p>
+            <p>서울특별시</p>
+            <p>서울특별시</p>
+            <p>서울특별시</p>
+          </Content>
+        ) : (
+          ""
+        )}
       </ModalDiv>
     </>
   );
