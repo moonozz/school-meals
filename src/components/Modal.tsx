@@ -49,6 +49,9 @@ function Modal(props: Props) {
 export default Modal;
 
 const ModalDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
   background-color: ${({ theme }) => theme.color.white};
   border-radius: 3.2rem;
   display: flex;
@@ -63,5 +66,6 @@ const Header = styled.div`
 `;
 
 const Content = styled.div`
+  display: flex;
   padding: 2rem 3rem 3rem;
 `;
