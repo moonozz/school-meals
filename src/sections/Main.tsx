@@ -3,23 +3,26 @@ import styled from "styled-components";
 import mainImg from "../data/mainImg";
 
 function Main() {
+  const mainImgArr = mainImg;
+  // console.log(mainImgArr);
   return (
     <MainSec>
       <Subtitle>바로 찾아보는 우리 학교 급식 정보</Subtitle>
       <FoodDiv>
         <ImgDiv>
+          {/* {mainImgArr} */}
           <img
-            src={`${process.env.PUBLIC_URL}/assets/${mainImg[0].url}`}
-            alt={`${mainImg[0].name}`}
+            src={`${process.env.PUBLIC_URL}/assets/${mainImg[0][0].url}`}
+            alt={`${mainImg[0][0].name}`}
           />
           <img
             className="hidden"
-            src={`${process.env.PUBLIC_URL}/assets/${mainImg[1].url}`}
-            alt={`${mainImg[1].name}`}
+            src={`${process.env.PUBLIC_URL}/assets/${mainImg[0][1].url}`}
+            alt={`${mainImg[0][1].name}`}
           />
           <img
-            src={`${process.env.PUBLIC_URL}/assets/${mainImg[2].url}`}
-            alt={`${mainImg[2].name}`}
+            src={`${process.env.PUBLIC_URL}/assets/${mainImg[0][2].url}`}
+            alt={`${mainImg[0][2].name}`}
           />
         </ImgDiv>
         <h2>ya,</h2>
