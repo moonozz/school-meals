@@ -1,25 +1,31 @@
 import React, { useState, Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { setModalClose } from "../store/modalSlice";
+import { RootState } from "../store/store";
 
 interface Props {
-  setModal: Dispatch<SetStateAction<boolean>>;
-  setDateSelect: Dispatch<SetStateAction<boolean>>;
-  setCitySelect: Dispatch<SetStateAction<boolean>>;
-  // modal: boolean;
-  dateSelect: boolean;
-  citySelect: boolean;
+  setDateSelect: Dispatch<SetStateAction<string>>;
+  setCitySelect: Dispatch<SetStateAction<string>>;
+  dateSelect: string;
+  citySelect: string;
 }
 
 function Modal(props: Props) {
+  const dispatch = useDispatch();
+  const modalState = useSelector((state: RootState) => state.modal);
+
   const modalClose = () => {
-    props.setModal(false);
-    props.setDateSelect(false);
-    props.setCitySelect(false);
+    // props.setModal(false);
+    // props.setDateSelect(false);
+    // props.setCitySelect(false);
+    dispatch(setModalClose());
+    console.log(modalState);
   };
 
   return (
     <>
-      <ModalDiv>
+      <ModalContainer>
         <Header>
           <button onClick={modalClose}>닫기</button>
         </Header>
@@ -41,22 +47,22 @@ function Modal(props: Props) {
         ) : (
           ""
         )}
-      </ModalDiv>
+      </ModalContainer>
     </>
   );
 }
 
 export default Modal;
-
-const ModalDiv = styled.div`
+const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 1rem;
   background-color: ${({ theme }) => theme.color.white};
   border-radius: 3.2rem;
-  display: flex;
   max-width: 71rem;
   width: 100%;
+  position: absolute;
+  z-index: 1;
 `;
 
 const Header = styled.div`

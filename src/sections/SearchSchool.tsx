@@ -1,29 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
 // import Arrow from "../images/arrow.svg";
 import { ReactComponent as Arrow } from "../images/arrow.svg";
-import Modal from "../components/Modal";
+import { setModalOpen } from "../store/modalSlice";
+import { RootState } from "../store/store";
 
-function SearchSchool() {
-  const [modal, setModal] = useState<boolean>(false);
-  const [dateSelect, setDateSelect] = useState<boolean>(false);
-  const [citySelect, setCitySelect] = useState<boolean>(false);
+interface Props {
+  setDateSelect: Dispatch<SetStateAction<string>>;
+  setCitySelect: Dispatch<SetStateAction<string>>;
+  dateSelect: string;
+  citySelect: string;
+}
 
-  // const handleModal = () => {
-  //   setModal(!modal);
-  //   console.log(modal);
-  // };
+function SearchSchool(props: Props) {
+  const dispatch = useDispatch();
+  const modalState = useSelector((state: RootState) => state.modal);
 
   const handleDateModal = () => {
-    setDateSelect(!dateSelect);
-    setModal(true);
-    console.log(modal);
+    dispatch(setModalOpen());
   };
 
   const handleCityModal = () => {
-    setCitySelect(!citySelect);
-    setModal(true);
-    console.log(modal);
+    dispatch(setModalOpen());
   };
 
   return (
@@ -55,17 +54,6 @@ function SearchSchool() {
         </ul>
       </Result>
       <Btn>급식 보기</Btn>
-      {modal ? (
-        <Modal
-          setModal={setModal}
-          setDateSelect={setDateSelect}
-          setCitySelect={setCitySelect}
-          dateSelect={dateSelect}
-          citySelect={citySelect}
-        />
-      ) : (
-        ""
-      )}
     </SearchSection>
   );
 }
