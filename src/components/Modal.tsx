@@ -54,14 +54,16 @@ function Modal(props: Props) {
 
 export default Modal;
 const ModalContainer = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   padding: 1rem;
   background-color: ${({ theme }) => theme.color.white};
   border-radius: 3.2rem;
   max-width: 71rem;
-  width: 100%;
-  position: absolute;
   z-index: 1;
 `;
 

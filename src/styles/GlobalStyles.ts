@@ -73,4 +73,8 @@ export const GlobalStyle = createGlobalStyle`
       display: block;
     }
   }
+
+  .overflow-hidden {
+    overflow-y: hidden;
+  }
 `;

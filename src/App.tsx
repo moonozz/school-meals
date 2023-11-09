@@ -11,7 +11,7 @@ import Modal from "./components/Modal";
 import { RootState } from "./store/store";
 
 function App() {
-  const modalState = useSelector((state: RootState) => state.modal);
+  const modalState = useSelector((state: RootState) => state.modal.modal);
 
   const [dateSelect, setDateSelect] = useState<string>("");
   const [citySelect, setCitySelect] = useState<string>("");
@@ -19,10 +19,8 @@ function App() {
   console.log(modalState);
 
   return (
-    <SchoolMeal>
-      {modalState.modal ? (
-        ""
-      ) : (
+    <SchoolMeal className={!modalState ? "" : "overflow-hidden"}>
+      {modalState ? null : (
         <>
           <ModalBackground />
           <Modal
@@ -54,8 +52,8 @@ const SchoolMeal = styled.div`
 const ModalBackground = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
-  height: 100%;
-  position: absolute;
+  height: 100vh;
+  position: fixed;
   bottom: 0;
   left: 0;
   z-index: 1;
