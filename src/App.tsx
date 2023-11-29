@@ -21,7 +21,7 @@ function App() {
   return (
     <SchoolMeal className={!modalState ? "" : "overflow-hidden"}>
       {modalState ? null : (
-        <>
+        <ModalSection>
           <ModalBackground />
           <Modal
             citySelect={citySelect}
@@ -29,7 +29,8 @@ function App() {
             setDateSelect={setDateSelect}
             setCitySelect={setCitySelect}
           />
-        </>
+          {/* <ModalBackground /> */}
+        </ModalSection>
       )}
       <Main />
       <SearchSchool
@@ -47,14 +48,23 @@ export default App;
 
 const SchoolMeal = styled.div`
   position: relative;
+  width: 100%;
+  height: 100%;
+`;
+
+const ModalSection = styled.section`
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
 `;
 
 const ModalBackground = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
-  height: 100vh;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
+  height: 100%;
+  /* position: fixed; */
+  /* bottom: 0; */
+  /* left: 0; */
+  /* z-index: 10; */
 `;
