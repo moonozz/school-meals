@@ -3,7 +3,11 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 // import Arrow from "../images/arrow.svg";
 import { ReactComponent as Arrow } from "../images/arrow.svg";
-import { setModalOpen } from "../store/modalSlice";
+import {
+  setCitySelect,
+  setDateSelect,
+  setModalOpen,
+} from "../store/modalSlice";
 import { RootState } from "../store/store";
 
 interface Props {
@@ -18,10 +22,12 @@ function SearchSchool(props: Props) {
   const modalState = useSelector((state: RootState) => state.modal);
 
   const handleDateModal = () => {
+    dispatch(setDateSelect());
     dispatch(setModalOpen());
   };
 
   const handleCityModal = () => {
+    dispatch(setCitySelect());
     dispatch(setModalOpen());
   };
 

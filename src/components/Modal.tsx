@@ -1,7 +1,11 @@
 import React, { useState, Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { setModalClose } from "../store/modalSlice";
+import {
+  setCitySelect,
+  setDateSelect,
+  setModalClose,
+} from "../store/modalSlice";
 import { RootState } from "../store/store";
 
 interface Props {
@@ -14,13 +18,14 @@ interface Props {
 function Modal(props: Props) {
   const dispatch = useDispatch();
   const modalState = useSelector((state: RootState) => state.modal);
+  // const modalSelect = useSelector((state: RootState) => state.modal.type)
 
   const modalClose = () => {
     // props.setModal(false);
     // props.setDateSelect(false);
     // props.setCitySelect(false);
     dispatch(setModalClose());
-    console.log(modalState);
+    console.log(modalState.modal);
   };
 
   return (
@@ -29,14 +34,14 @@ function Modal(props: Props) {
         <Header>
           <button onClick={modalClose}>닫기</button>
         </Header>
-        {props.dateSelect ? (
+        {modalState.type === "date" ? (
           <Content>
             <p>dateSelect</p>
           </Content>
         ) : (
           ""
         )}
-        {props.citySelect ? (
+        {modalState.type === "city" ? (
           <Content>
             <p>서울특별시</p>
             <p>서울특별시</p>

@@ -4,7 +4,7 @@ import ModalType from "./modalType";
 // import { ReactNode } from "react";
 
 const initialState: ModalType = {
-  // type: "",
+  type: "",
   modal: true,
 };
 
@@ -12,6 +12,12 @@ const ModalSlice = createSlice({
   name: "Modal",
   initialState,
   reducers: {
+    setCitySelect: (state) => {
+      state.type = "city";
+    },
+    setDateSelect: (state) => {
+      state.type = "date";
+    },
     setModalOpen: (state) => {
       state.modal = false;
       // state.modal = true;
@@ -23,5 +29,6 @@ const ModalSlice = createSlice({
   },
 });
 
-export const { setModalOpen, setModalClose } = ModalSlice.actions;
+export const { setCitySelect, setDateSelect, setModalOpen, setModalClose } =
+  ModalSlice.actions;
 export default ModalSlice;
