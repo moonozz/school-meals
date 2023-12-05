@@ -13,6 +13,7 @@ const color = {
   lightMain: "#F5EDE2",
   // orange: "#FF6D3B",
   lightGray: "#F6F6F6",
+  hoverGray: "#E6E6E6",
   gray100: "#9B9B9B",
   gray150: "#505050",
 };

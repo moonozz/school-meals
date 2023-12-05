@@ -43,11 +43,11 @@ function Modal(props: Props) {
         )}
         {modalState.type === "city" ? (
           <Content>
-            <p>서울특별시</p>
-            <p>서울특별시</p>
-            <p>서울특별시</p>
-            <p>서울특별시</p>
-            <p>서울특별시</p>
+            <button>서울특별시</button>
+            <button>서울특별시</button>
+            <button>서울특별시</button>
+            <button>서울특별시</button>
+            <button>서울특별시</button>
           </Content>
         ) : (
           ""
@@ -82,4 +82,14 @@ const Header = styled.div`
 const Content = styled.div`
   display: flex;
   padding: 2rem 3rem 3rem;
+  button {
+    font-size: ${({ theme }) => theme.fontSize.xs};
+    background-color: ${({ theme }) => theme.color.lightGray};
+    padding: 1.4rem 1.6rem;
+    border-radius: 3.2rem;
+    margin-right: 1rem;
+    &:hover {
+      background-color: ${({ theme }) => theme.color.hoverGray};
+    }
+  }
 `;
