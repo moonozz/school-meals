@@ -32,7 +32,7 @@ function Modal(props: Props) {
     <>
       <ModalContainer>
         <Header>
-          <button onClick={modalClose}>닫기</button>
+          <CloseBtnArea onClick={modalClose} />
         </Header>
         {modalState.type === "date" ? (
           <Content>
@@ -58,6 +58,7 @@ function Modal(props: Props) {
 }
 
 export default Modal;
+
 const ModalContainer = styled.div`
   /* position: absolute; */
   position: fixed;
@@ -77,6 +78,32 @@ const Header = styled.div`
   padding: 1rem 1rem 0rem;
   display: flex;
   justify-content: end;
+`;
+
+const CloseBtnArea = styled.button`
+  width: 4.8rem;
+  height: 4.8rem;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    border-bottom: 0.2rem solid ${({ theme }) => theme.color.black};
+    width: 2.4rem;
+    top: 50%;
+    left: 25%;
+    transform: rotateZ(-45deg);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    border-bottom: 0.2rem solid ${({ theme }) => theme.color.black};
+    width: 2.4rem;
+    top: 50%;
+    left: 25%;
+    transform: rotateZ(45deg);
+  }
 `;
 
 const Content = styled.div`
