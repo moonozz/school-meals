@@ -1,5 +1,6 @@
 import React, { useState, Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
+import Calendar from "./Calendar";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setCitySelect,
@@ -37,6 +38,7 @@ function Modal(props: Props) {
         {modalState.type === "date" ? (
           <Content>
             <p>dateSelect</p>
+            <Calendar />
           </Content>
         ) : (
           ""

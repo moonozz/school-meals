@@ -1,5 +1,6 @@
 import React, { useState, Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
+import Calendar from "../components/Calendar";
 import { useDispatch, useSelector } from "react-redux";
 // import Arrow from "../images/arrow.svg";
 import { ReactComponent as Arrow } from "../images/arrow.svg";
@@ -25,6 +26,9 @@ function SearchSchool(props: Props) {
     dispatch(setDateSelect());
     dispatch(setModalOpen());
   };
+  const handleDatePicker = () => {
+    dispatch(setDateSelect());
+  };
 
   const handleCityModal = () => {
     dispatch(setCitySelect());
@@ -36,9 +40,10 @@ function SearchSchool(props: Props) {
       <h4>궁금한 날짜와 지역, 학교를 검색해주세요!</h4>
       <SearchForm>
         <SelectArea>
-          <Select onClick={handleDateModal}>
-            <span>23년 10월</span>
-            {/* <img src={Arrow} alt="select arrow image" /> */}
+          <Select>
+            {/* <span>23년 10월</span> */}
+            <Calendar />
+            {/* <Calendar handleDatePicker={handleDatePicker} /> */}
             <Arrow />
           </Select>
           <Select onClick={handleCityModal}>
