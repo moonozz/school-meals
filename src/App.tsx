@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import styled from "styled-components";
 import { useSelector } from "react-redux";
@@ -16,10 +16,20 @@ function App() {
   const [dateSelect, setDateSelect] = useState<string>("");
   const [citySelect, setCitySelect] = useState<string>("");
 
+  useEffect(() => {
+    !modalState
+      ? (document.body.style.overflowY = "hidden")
+      : (document.body.style.overflowY = "auto");
+
+    return () => {
+      document.body.style.overflowY = "auto";
+    };
+  }, [modalState]);
+
   console.log(modalState);
 
   return (
-    <SchoolMeal className={!modalState ? "" : "overflow-hidden"}>
+    <SchoolMeal>
       {modalState ? null : (
         <ModalSection>
           <ModalBackground />

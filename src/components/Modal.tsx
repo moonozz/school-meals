@@ -62,7 +62,7 @@ export default Modal;
 const ModalContainer = styled.div`
   /* position: absolute; */
   position: fixed;
-  top: 50vh;
+  top: 40vh;
   left: 25%;
   width: 100%;
   display: flex;
