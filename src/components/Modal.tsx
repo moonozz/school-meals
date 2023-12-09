@@ -9,14 +9,14 @@ import {
 } from "../store/modalSlice";
 import { RootState } from "../store/store";
 
-interface Props {
-  setDateSelect: Dispatch<SetStateAction<string>>;
-  setCitySelect: Dispatch<SetStateAction<string>>;
-  dateSelect: string;
-  citySelect: string;
-}
+// interface Props {
+//   setDateSelect: Dispatch<SetStateAction<string>>;
+//   setCitySelect: Dispatch<SetStateAction<string>>;
+//   dateSelect: string;
+//   citySelect: string;
+// }
 
-function Modal(props: Props) {
+function Modal() {
   const dispatch = useDispatch();
   const modalState = useSelector((state: RootState) => state.modal);
   // const modalSelect = useSelector((state: RootState) => state.modal.type)

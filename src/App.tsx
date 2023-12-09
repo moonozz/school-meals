@@ -13,8 +13,8 @@ import { RootState } from "./store/store";
 function App() {
   const modalState = useSelector((state: RootState) => state.modal.modal);
 
-  const [dateSelect, setDateSelect] = useState<string>("");
-  const [citySelect, setCitySelect] = useState<string>("");
+  // const [dateSelect, setDateSelect] = useState<string>("");
+  // const [citySelect, setCitySelect] = useState<string>("");
 
   useEffect(() => {
     !modalState
@@ -34,20 +34,20 @@ function App() {
         <ModalSection>
           <ModalBackground />
           <Modal
-            citySelect={citySelect}
-            dateSelect={dateSelect}
-            setDateSelect={setDateSelect}
-            setCitySelect={setCitySelect}
+          // citySelect={citySelect}
+          // dateSelect={dateSelect}
+          // setDateSelect={setDateSelect}
+          // setCitySelect={setCitySelect}
           />
           {/* <ModalBackground /> */}
         </ModalSection>
       )}
       <Main />
       <SearchSchool
-        citySelect={citySelect}
-        dateSelect={dateSelect}
-        setDateSelect={setDateSelect}
-        setCitySelect={setCitySelect}
+      // citySelect={citySelect}
+      // dateSelect={dateSelect}
+      // setDateSelect={setDateSelect}
+      // setCitySelect={setCitySelect}
       />
       <Result />
     </SchoolMeal>
