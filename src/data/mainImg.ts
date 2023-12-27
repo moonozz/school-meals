@@ -30,16 +30,16 @@ const mainImg: ImgObj[][] = [
     { id: 13, name: "curry-img", url: "curry.png" },
     { id: 14, name: "waffle-img", url: "waffle.png" },
   ], // 5
-  [
-    { id: 15, name: "donut-img", url: "donut.png" },
-    { id: 16, name: "juice-img", url: "juice.png" },
-    { id: 17, name: "bread-img", url: "bread.png" },
-  ], // 6
-  [
-    { id: 18, name: "spaghetti-img", url: "spaghetti.png" },
-    { id: 19, name: "sushi-img", url: "sushi.png" },
-    { id: 20, name: "cake-img", url: "cake.png" },
-  ], // 7
+  // [
+  //   { id: 15, name: "donut-img", url: "donut.png" },
+  //   { id: 16, name: "juice-img", url: "juice.png" },
+  //   { id: 17, name: "bread-img", url: "bread.png" },
+  // ], // 6
+  // [
+  //   { id: 18, name: "spaghetti-img", url: "spaghetti.png" },
+  //   { id: 19, name: "sushi-img", url: "sushi.png" },
+  //   { id: 20, name: "cake-img", url: "cake.png" },
+  // ], // 7
 ];
 
 export default mainImg;
