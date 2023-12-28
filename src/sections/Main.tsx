@@ -298,8 +298,8 @@ const ImgDiv = styled.div`
   position: absolute;
   width: 100%;
   height: calc(100% - 8rem);
+  /* height: 18.8rem; */
   padding: 4rem 0rem;
-  /* margin-bottom: 100%; */
   display: flex;
   /* display: inline-flex; */
   flex-direction: column;
@@ -313,6 +313,7 @@ const ImgDiv = styled.div`
   }
 
   @media ${({ theme }) => theme.mobile} {
+    /* height: 100%; */
     img {
       width: 25rem;
       height: 25rem;

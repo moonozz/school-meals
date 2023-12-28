@@ -68,9 +68,9 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .hidden {
-    display: none;
+    display: none !important;
     @media ${({ theme }) => theme.desktop} {
-      display: block;
+      display: block !important;
     }
   }
 `;
