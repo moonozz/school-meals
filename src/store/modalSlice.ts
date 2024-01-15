@@ -1,23 +1,20 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 // import ModalStore from "./store";
 import ModalType from "./modalType";
 // import { ReactNode } from "react";
 
 const initialState: ModalType = {
-  type: "",
   modal: true,
+  modalType: "",
+  cityName: "",
+  cityCode: "",
+  date: "",
 };
 
 const ModalSlice = createSlice({
   name: "Modal",
   initialState,
   reducers: {
-    setCitySelect: (state) => {
-      state.type = "city";
-    },
-    setDateSelect: (state) => {
-      state.type = "date";
-    },
     setModalOpen: (state) => {
       state.modal = false;
       // state.modal = true;
@@ -26,9 +23,21 @@ const ModalSlice = createSlice({
       // state.modal = false;
       state.modal = true;
     },
+    setModalCity: (state) => {
+      state.modalType = "city";
+    },
+    setModalDate: (state) => {
+      state.modalType = "date";
+    },
+    setCityName: (state, action: PayloadAction<string>) => {
+      state.cityName = action.payload;
+    },
+    setCityCode: (state, action: PayloadAction<string>) => {
+      state.cityCode = action.payload;
+    }
   },
 });
 
-export const { setCitySelect, setDateSelect, setModalOpen, setModalClose } =
+export const { setModalOpen, setModalClose, setModalCity, setModalDate, setCityName, setCityCode} =
   ModalSlice.actions;
 export default ModalSlice;

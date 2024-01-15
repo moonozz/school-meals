@@ -4,6 +4,9 @@ import ModalSlice from "./modalSlice";
 const store = configureStore({
   reducer: {
     modal: ModalSlice.reducer,
+    modalType: ModalSlice.reducer,
+    cityName: ModalSlice.reducer,
+    cityCode: ModalSlice.reducer,
   },
 });
 
