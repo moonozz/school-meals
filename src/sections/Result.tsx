@@ -4,7 +4,7 @@ import styled from "styled-components";
 function Result() {
   return (
     <ResultSection>
-      <h4>궁금한 날짜와 지역, 학교를 검색해주세요!</h4>
+      <h4>00년 00월 00고등학교 급식표</h4>
       <ResultArea>
         <MealsUl>
           <Meal>

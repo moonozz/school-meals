@@ -2,16 +2,19 @@ import React, { useState, Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
 import Calendar from "./Calendar";
 import { useDispatch, useSelector } from "react-redux";
+import cityCodeKey from "../data/CityCodeKey";
 import {
-  setCitySelect,
-  setDateSelect,
+  setModalCity,
+  setModalDate,
   setModalClose,
+  setCityName,
+  setCityCode,
 } from "../store/modalSlice";
 import { RootState } from "../store/store";
 
 // interface Props {
-//   setDateSelect: Dispatch<SetStateAction<string>>;
-//   setCitySelect: Dispatch<SetStateAction<string>>;
+//   setModalDate: Dispatch<SetStateAction<string>>;
+//   setModalCity: Dispatch<SetStateAction<string>>;
 //   dateSelect: string;
 //   citySelect: string;
 // }
@@ -19,15 +22,22 @@ import { RootState } from "../store/store";
 function Modal() {
   const dispatch = useDispatch();
   const modalState = useSelector((state: RootState) => state.modal);
-  // const modalSelect = useSelector((state: RootState) => state.modal.type)
+  const cityNameState = useSelector((state: RootState) => state.cityName);
+  const cityCodeState = useSelector((state: RootState) => state.cityCode);
 
   const modalClose = () => {
     // props.setModal(false);
-    // props.setDateSelect(false);
-    // props.setCitySelect(false);
+    // props.setModalDate(false);
+    // props.setModalCity(false);
     dispatch(setModalClose());
     console.log(modalState.modal);
   };
+
+  const handleCity = (name: string, code: string) => {
+    dispatch(setCityName(name));
+    dispatch(setCityCode(code));
+    dispatch(setModalClose());
+  }
 
   return (
     <>
@@ -35,7 +45,7 @@ function Modal() {
         <Header>
           <CloseBtnArea onClick={modalClose} />
         </Header>
-        {modalState.type === "date" ? (
+        {modalState.modalType === "date" ? (
           <Content>
             <p>dateSelect</p>
             <Calendar />
@@ -43,13 +53,16 @@ function Modal() {
         ) : (
           ""
         )}
-        {modalState.type === "city" ? (
+        {modalState.modalType === "city" ? (
           <Content>
-            <button>서울특별시</button>
-            <button>서울특별시</button>
-            <button>서울특별시</button>
-            <button>서울특별시</button>
-            <button>서울특별시</button>
+            {cityCodeKey.map((item) => {
+              const cityName = Object.keys(item)[0]
+              const cityNameCode = JSON.stringify(Object.values(item))
+              
+              return (
+                <button key={cityNameCode} onClick={() => handleCity(cityName, cityNameCode)}>{cityName}</button>
+              )
+            })}
           </Content>
         ) : (
           ""

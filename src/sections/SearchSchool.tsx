@@ -1,19 +1,20 @@
 import React, { useState, Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
-import Calendar from "../components/Calendar";
 import { useDispatch, useSelector } from "react-redux";
+import Calendar from "../components/Calendar";
+import cityCode from "../data/CityCodeKey";
 // import Arrow from "../images/arrow.svg";
 import { ReactComponent as Arrow } from "../images/arrow.svg";
 import {
-  setCitySelect,
-  setDateSelect,
+  setModalCity,
+  setModalDate,
   setModalOpen,
 } from "../store/modalSlice";
 import { RootState } from "../store/store";
 
 // interface Props {
-//   setDateSelect: Dispatch<SetStateAction<string>>;
-//   setCitySelect: Dispatch<SetStateAction<string>>;
+//   setModalDate: Dispatch<SetStateAction<string>>;
+//   setModalCity: Dispatch<SetStateAction<string>>;
 //   dateSelect: string;
 //   citySelect: string;
 // }
@@ -21,18 +22,20 @@ import { RootState } from "../store/store";
 function SearchSchool() {
   const dispatch = useDispatch();
   const modalState = useSelector((state: RootState) => state.modal);
+  const cityState = useSelector((state: RootState) => state.modalType);
 
   const handleDateModal = () => {
-    dispatch(setDateSelect());
+    dispatch(setModalDate());
     dispatch(setModalOpen());
   };
   const handleDatePicker = () => {
-    dispatch(setDateSelect());
+    dispatch(setModalDate());
   };
 
   const handleCityModal = () => {
-    dispatch(setCitySelect());
+    dispatch(setModalCity());
     dispatch(setModalOpen());
+    console.log(cityState)
   };
 
   return (
@@ -47,6 +50,7 @@ function SearchSchool() {
             <Arrow />
           </Select>
           <Select onClick={handleCityModal}>
+            {}
             <span>서울특별시</span>
             {/* <img src={Arrow} alt="select arrow image" /> */}
             <Arrow />
