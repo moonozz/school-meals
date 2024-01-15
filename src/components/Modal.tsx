@@ -64,15 +64,15 @@ export default Modal;
 const ModalContainer = styled.div`
   /* position: absolute; */
   position: fixed;
-  top: 40vh;
-  left: 25%;
-  width: 100%;
+  top: 50%;
+  left: 50%;
+  width: calc(100% - 4rem);
   display: flex;
   flex-direction: column;
-  padding: 1rem;
   background-color: ${({ theme }) => theme.color.white};
   border-radius: 3.2rem;
-  max-width: 71rem;
+  max-width: 70rem;
+  transform: translate(-50%, -50%)
   /* z-index: 10; */
 `;
 
@@ -110,13 +110,14 @@ const CloseBtnArea = styled.button`
 
 const Content = styled.div`
   display: flex;
-  padding: 2rem 3rem 3rem;
+  padding: 2rem 3rem 2rem;
+  flex-wrap: wrap;
   button {
     font-size: ${({ theme }) => theme.fontSize.xs};
     background-color: ${({ theme }) => theme.color.lightGray};
     padding: 1.4rem 1.6rem;
     border-radius: 3.2rem;
-    margin-right: 1rem;
+    margin: 0 1rem 1rem 0;
     &:hover {
       background-color: ${({ theme }) => theme.color.hoverGray};
     }
