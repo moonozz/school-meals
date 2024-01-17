@@ -36,6 +36,7 @@ function SearchSchool() {
     dispatch(setModalCity());
     dispatch(setModalOpen());
     console.log(cityState)
+    console.log(cityState.cityName)
   };
 
   return (
@@ -50,8 +51,10 @@ function SearchSchool() {
             <Arrow />
           </Select>
           <Select onClick={handleCityModal}>
-            {}
-            <span>서울특별시</span>
+            {
+              !cityState.cityName ? 
+              <span>지역을 선택해주세요</span> : <span>{cityState.cityName}</span>
+            }
             {/* <img src={Arrow} alt="select arrow image" /> */}
             <Arrow />
           </Select>

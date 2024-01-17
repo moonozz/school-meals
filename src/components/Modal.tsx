@@ -22,6 +22,7 @@ import { RootState } from "../store/store";
 function Modal() {
   const dispatch = useDispatch();
   const modalState = useSelector((state: RootState) => state.modal);
+  const cityState = useSelector((state: RootState) => state.modalType);
   const cityNameState = useSelector((state: RootState) => state.cityName);
   const cityCodeState = useSelector((state: RootState) => state.cityCode);
 
@@ -58,9 +59,10 @@ function Modal() {
             {cityCodeKey.map((item) => {
               const cityName = Object.keys(item)[0]
               const cityNameCode = JSON.stringify(Object.values(item))
+              const activeBtn = cityState.cityName === cityName
               
               return (
-                <button key={cityNameCode} onClick={() => handleCity(cityName, cityNameCode)}>{cityName}</button>
+                <button className={activeBtn ? "activeBtn" : ""} key={cityNameCode} onClick={() => handleCity(cityName, cityNameCode)}>{cityName}</button>
               )
             })}
           </Content>
@@ -133,6 +135,10 @@ const Content = styled.div`
     margin: 0 1rem 1rem 0;
     &:hover {
       background-color: ${({ theme }) => theme.color.hoverGray};
+    }
+    &.activeBtn {
+      background-color: ${({ theme }) => theme.color.black};
+      color: ${({ theme }) => theme.color.white};
     }
   }
 `;
