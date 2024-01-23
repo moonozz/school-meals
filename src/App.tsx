@@ -11,44 +11,33 @@ import Modal from "./components/Modal";
 import { RootState } from "./store/store";
 
 function App() {
-  const modalState = useSelector((state: RootState) => state.modal.modal);
+  const modalState = useSelector((state: RootState) => state.modal);
 
   // const [dateSelect, setModalDate] = useState<string>("");
   // const [citySelect, setModalCity] = useState<string>("");
 
   useEffect(() => {
-    !modalState
+    !modalState.modal
       ? (document.body.style.overflowY = "hidden")
       : (document.body.style.overflowY = "auto");
 
     return () => {
       document.body.style.overflowY = "auto";
     };
-  }, [modalState]);
+  }, [modalState.modal]);
 
-  console.log(modalState);
+  console.log(modalState.modal);
 
   return (
     <SchoolMeal>
-      {modalState ? null : (
+      {modalState.modal ? null : (
         <ModalSection>
           <ModalBackground />
-          <Modal
-          // citySelect={citySelect}
-          // dateSelect={dateSelect}
-          // setModalDate={setModalDate}
-          // setModalCity={setModalCity}
-          />
-          {/* <ModalBackground /> */}
+          <Modal />
         </ModalSection>
       )}
       <Main />
-      <SearchSchool
-      // citySelect={citySelect}
-      // dateSelect={dateSelect}
-      // setModalDate={setModalDate}
-      // setModalCity={setModalCity}
-      />
+      <SearchSchool />
       <Result />
     </SchoolMeal>
   );
