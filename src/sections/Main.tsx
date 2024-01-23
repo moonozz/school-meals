@@ -31,17 +31,20 @@ function Main() {
         {/* <Animation> */}
         {mainImgArr.map((item) => {
           return (
-            <ImgDiv>
+            <ImgDiv key={`${item[0].id}`}>
               <img
+                key={`${item[0].name}`}
                 src={`${process.env.PUBLIC_URL}/assets/${item[0].url}`}
                 alt={`${item[0].name}`}
               />
               <img
                 className="hidden"
+                key={`${item[1].name}`}
                 src={`${process.env.PUBLIC_URL}/assets/${item[1].url}`}
                 alt={`${item[1].name}`}
               />
               <img
+                key={`${item[2].name}`}
                 src={`${process.env.PUBLIC_URL}/assets/${item[2].url}`}
                 alt={`${item[2].name}`}
               />
