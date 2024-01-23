@@ -22,21 +22,26 @@ import { RootState } from "../store/store";
 function SearchSchool() {
   const dispatch = useDispatch();
   const modalState = useSelector((state: RootState) => state.modal);
-  const cityState = useSelector((state: RootState) => state.modalType);
 
+  // datepicker를 modal로 띄우게하기
   const handleDateModal = () => {
     dispatch(setModalDate());
     dispatch(setModalOpen());
+    console.log(modalState)
+    console.log(modalState.date)
   };
+
   const handleDatePicker = () => {
     dispatch(setModalDate());
-  };
+    console.log(modalState)
+    console.log(modalState.date)
+  }
 
   const handleCityModal = () => {
     dispatch(setModalCity());
     dispatch(setModalOpen());
-    console.log(cityState)
-    console.log(cityState.cityName)
+    console.log(modalState)
+    console.log(modalState.cityName)
   };
 
   return (
@@ -44,16 +49,15 @@ function SearchSchool() {
       <h4>궁금한 날짜와 지역, 학교를 검색해주세요!</h4>
       <SearchForm>
         <SelectArea>
-          <Select>
-            {/* <span>23년 10월</span> */}
+          <Select onClick={handleDatePicker}>
+          {/* <Select onClick={handleDateModal}> */}
             <Calendar />
-            {/* <Calendar handleDatePicker={handleDatePicker} /> */}
             <Arrow />
           </Select>
           <Select onClick={handleCityModal}>
             {
-              !cityState.cityName ? 
-              <span>지역을 선택해주세요</span> : <span>{cityState.cityName}</span>
+              !modalState.cityName ? 
+              <span>지역을 선택해주세요</span> : <span>{modalState.cityName}</span>
             }
             {/* <img src={Arrow} alt="select arrow image" /> */}
             <Arrow />

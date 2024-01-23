@@ -1,4 +1,4 @@
-import React, { useState, Dispatch, SetStateAction } from "react";
+import React, { useEffect, SetStateAction } from "react";
 import styled from "styled-components";
 import Calendar from "./Calendar";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,6 +9,7 @@ import {
   setModalClose,
   setCityName,
   setCityCode,
+  setDate,
 } from "../store/modalSlice";
 import { RootState } from "../store/store";
 
@@ -22,9 +23,9 @@ import { RootState } from "../store/store";
 function Modal() {
   const dispatch = useDispatch();
   const modalState = useSelector((state: RootState) => state.modal);
-  const cityState = useSelector((state: RootState) => state.modalType);
-  const cityNameState = useSelector((state: RootState) => state.cityName);
-  const cityCodeState = useSelector((state: RootState) => state.cityCode);
+  // const allState = useSelector((state: RootState) => state.modal.modalType);
+  const cityNameState = useSelector((state: RootState) => state.modal.cityName);
+  // const cityCodeState = useSelector((state: RootState) => state.modal.cityCode);
 
   const modalClose = () => {
     // props.setModal(false);
@@ -40,6 +41,11 @@ function Modal() {
     dispatch(setModalClose());
   }
 
+  const handleDate = (date: Date) => {
+    dispatch(setDate(date))
+    dispatch(setModalClose());
+  }
+
   return (
     <>
       <ModalContainer>
@@ -48,8 +54,7 @@ function Modal() {
         </Header>
         {modalState.modalType === "date" ? (
           <Content>
-            <p>dateSelect</p>
-            <Calendar />
+            {/* <Calendar /> */}
           </Content>
         ) : (
           ""
@@ -59,7 +64,7 @@ function Modal() {
             {cityCodeKey.map((item) => {
               const cityName = Object.keys(item)[0]
               const cityNameCode = JSON.stringify(Object.values(item))
-              const activeBtn = cityState.cityName === cityName
+              const activeBtn = cityNameState === cityName
               
               return (
                 <button className={activeBtn ? "activeBtn" : ""} key={cityNameCode} onClick={() => handleCity(cityName, cityNameCode)}>{cityName}</button>

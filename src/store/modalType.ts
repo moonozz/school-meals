@@ -6,7 +6,8 @@ interface ModalStoreType {
   modalType: string;
   cityName: string;
   cityCode: string;
-  date: string;
+  date: Date;
+  // date: string;
 }
 
 export default ModalStoreType;

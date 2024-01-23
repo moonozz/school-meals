@@ -3,12 +3,9 @@ import ModalSlice from "./modalSlice";
 
 const store = configureStore({
   reducer: {
-    modal: ModalSlice.reducer,
-    modalType: ModalSlice.reducer,
-    cityName: ModalSlice.reducer,
-    cityCode: ModalSlice.reducer,
+    modal: ModalSlice
   },
 });
 
-export default store;
 export type RootState = ReturnType<typeof store.getState>;
+export default store;

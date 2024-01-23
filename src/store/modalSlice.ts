@@ -8,7 +8,7 @@ const initialState: ModalType = {
   modalType: "",
   cityName: "",
   cityCode: "",
-  date: "",
+  date: new Date(),
 };
 
 const ModalSlice = createSlice({
@@ -34,10 +34,13 @@ const ModalSlice = createSlice({
     },
     setCityCode: (state, action: PayloadAction<string>) => {
       state.cityCode = action.payload;
+    },
+    setDate: (state, action: PayloadAction<Date>) => {
+      state.date = action.payload;
     }
   },
 });
 
-export const { setModalOpen, setModalClose, setModalCity, setModalDate, setCityName, setCityCode} =
+export const { setModalOpen, setModalClose, setModalCity, setModalDate, setCityName, setCityCode, setDate} =
   ModalSlice.actions;
-export default ModalSlice;
+export default ModalSlice.reducer;
