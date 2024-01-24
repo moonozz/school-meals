@@ -8,6 +8,7 @@ import {
   setModalCity,
   setModalDate,
   setModalOpen,
+  setInputSchoolName,
 } from "../store/modalSlice";
 import { RootState } from "../store/store";
 
@@ -21,31 +22,35 @@ import { RootState } from "../store/store";
 function SearchSchool() {
   const dispatch = useDispatch();
   const modalState = useSelector((state: RootState) => state.modal);
+  const inputSchool = useSelector((state: RootState) => state.modal.inputSchoolName)
   
-  const [school, setSchool] = useState<string>("");
+  // const [school, setSchool] = useState<string>("");
+  const [schoolSearchResult, setSchoolSearchResult] = useState(0);
+  const Console = modalState.cityCode
 
   const handleSchoolSearchBtn = (e?: React.MouseEvent<HTMLButtonElement>) => {
     if (e) {
       e.preventDefault(); // 기본 동작 막기
     }
 
-    if (modalState.cityName.length === 0) {
+    if (!modalState.cityName) {
       alert("지역을 선택해주세요.")
-    } else if (school.length === 0) {
+    } else if (!inputSchool) {
       alert("학교명을 입력해주세요.")
     } else {
       // search bar에 학교 검색하기
       // 링크 https://open.neis.go.kr/portal/data/service/selectServicePage.do?page=1&rows=10&sortColumn=&sortDirection=&infId=OPEN17020190531110010104913&infSeq=2
       axios
-        .get(`https://open.neis.go.kr/hub/schoolInfo?ATPT_OFCDC_SC_CODE=${modalState.cityCode}&SCHUL_NM=${school}&Type=json&pIndex=1&pSize=100&KEY=${process.env.REACT_APP_NICE_API_KEY}`)
-        // .get(`https://open.neis.go.kr/hub/schoolInfo?KEY=${process.env.REACT_APP_NICE_API_KEY}&Type=json&pIndex=1&pSize=1000&ATPT_OFCDC_SC_CODE=${modalState.cityCode}&SCHUL_NM=${school}`)
+        .get(`https://open.neis.go.kr/hub/schoolInfo?KEY=${process.env.REACT_APP_NICE_API_KEY}&Type=json&pIndex=1&pSize=1000&ATPT_OFCDC_SC_CODE=${modalState.cityCode}&SCHUL_NM=${inputSchool}`)
         .then((res) => {
+          const schoolInfoData = res.data.schoolInfo[1].row
           console.log('성공')
-          console.log(res)
+          console.log(res.data.schoolInfo[1].row)
+          console.log(res.data.schoolInfo[1].row.length)
         })
         .catch((err) => {
           console.log('실패')
-          console.log(err)
+          alert("입력하신 학교명을 다시 확인해주세요.")
         })
     }
   }
@@ -74,13 +79,17 @@ function SearchSchool() {
   const handleCityModal = () => {
     dispatch(setModalCity());
     dispatch(setModalOpen());
-    console.log(modalState)
-    console.log(modalState.cityName)
+    // console.log(modalState)
+    // console.log(modalState.cityName)
+    // console.log(Console);
+    // console.log(Console[0]);
   };
 
   const handleSchoolName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSchool(e.target.value);
-    console.log(school);
+    // setSchool(e.target.value);
+    dispatch(setInputSchoolName(e.target.value));
+    // console.log(school);
+    console.log(`inputSchool + ${inputSchool}`)
   }
 
   return (
@@ -103,14 +112,25 @@ function SearchSchool() {
           </Select>
         </SelectArea>
         <Search>
-          <input placeholder="학교명을 검색해주세요." value={school} onChange={handleSchoolName} onKeyDown={handleEnterKeypress}></input>
+          <input placeholder="학교명을 검색해주세요." value={inputSchool.length === 0 ? "" : inputSchool} onChange={handleSchoolName} onKeyDown={handleEnterKeypress}></input>
           <button onClick={handleSchoolSearchBtn}>검색</button>
         </Search>
       </SearchForm>
-      <SchoolSelect>
+      {/* <SchoolSelect>
         <span>학교를 선택해주세요.</span>
         <Arrow />
-      </SchoolSelect>
+      </SchoolSelect> */}
+      <Result>
+        <span>'덕' 의 검색결과 11개</span>
+        <ul>
+          <li>덕수고등학교</li>
+          <li>덕수고등학교</li>
+          <li>덕수고등학교</li>
+          <li>덕수고등학교</li>
+          <li>덕수고등학교</li>
+          <li>덕수고등학교</li>
+        </ul>
+      </Result>
       <Btn>급식 보기</Btn>
     </SearchSection>
   );
@@ -213,26 +233,80 @@ const Search = styled.form`
   }
 `;
 
-const SchoolSelect = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: ${({ theme }) => theme.color.white};
-  padding: 1.4rem 2.4rem;
-  border-radius: 3.2rem;
-  margin: 0.5rem 0;
-  font-size: ${({ theme }) => theme.fontSize.xs};
-  max-width: 116rem;
-  width: calc(100% - 4.4rem);
-  /* width: 100%; */
+// const SchoolSelect = styled.div`
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   background-color: ${({ theme }) => theme.color.white};
+//   padding: 1.4rem 2.4rem;
+//   border-radius: 3.2rem;
+//   margin: 0.5rem 0;
+//   font-size: ${({ theme }) => theme.fontSize.xs};
+//   max-width: 116rem;
+//   width: calc(100% - 4.4rem);
+//   /* width: 100%; */
 
-  @media ${({ theme }) => theme.mobile} {
-    margin: 0.8rem 0;
-    flex-grow: 1;
-    font-size: ${({ theme }) => theme.fontSize.s};
+//   @media ${({ theme }) => theme.mobile} {
+//     margin: 0.8rem 0;
+//     flex-grow: 1;
+//     font-size: ${({ theme }) => theme.fontSize.s};
+//   }
+//   @media ${({theme}) => theme.desktop} {
+//     margin-top: 1.6rem;
+//   }
+// `
+
+const Result = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: ${({ theme }) => theme.color.white};
+  border-radius: 3.2rem;
+  margin-top: 1.6rem;
+  width: 100%;
+  height: 21rem;
+  max-width: 120rem;
+  max-height: 21rem;
+  font-size: ${({ theme }) => theme.fontSize.xs};
+  span {
+    height: 3rem;
+    margin: 2rem 3.2rem 0.4rem;
+    font-size: ${({theme}) => theme.fontSize.xs};
+    color: ${({theme}) => theme.color.gray100}
   }
-  @media ${({theme}) => theme.desktop} {
-    margin-top: 1.6rem;
+  ul {
+    width: calc(100% - 2rem);
+    height: calc(17.8rem - 3.2rem);
+    max-height: calc(17.8rem - 3.2rem);
+
+    padding: 0rem 1rem 1rem;
+    overflow: auto;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      /* display: flex; */
+      width: 0.4rem; 
+      height: 10rem;
+      background-color: none;
+      /* margin-right: 10rem; */
+    }
+    &::-webkit-scrollbar-track {
+      background-color: none
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 0.4rem;
+      background-color: ${({theme}) => theme.color.gray100}
+    }
+  }
+  li {
+    padding: 1rem 2.4rem;
+    cursor: pointer;
+    &:hover {
+      color: ${({theme}) => theme.color.gray100}
+    }
+  }
+
+
+  @media ${({ theme }) => theme.tablet} {
+    font-size: ${({ theme }) => theme.fontSize.s};
   }
 `
 
