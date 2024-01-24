@@ -10,6 +10,7 @@ import {
   setCityName,
   setCityCode,
   setDate,
+  setSchoolSearchBtn,
   setInputSchoolName,
 } from "../store/modalSlice";
 import { RootState } from "../store/store";
@@ -41,6 +42,8 @@ function Modal() {
     dispatch(setCityName(name));
     dispatch(setCityCode(code));
     dispatch(setInputSchoolName(""))
+    dispatch(setSchoolSearchBtn(false))
+    console.log(modalState.schoolSearchBtn);
     dispatch(setModalClose());
   }
 

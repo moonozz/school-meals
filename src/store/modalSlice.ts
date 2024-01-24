@@ -48,8 +48,8 @@ const ModalSlice = createSlice({
     setInputSchoolName: (state, action: PayloadAction<string>) => {
       state.inputSchoolName = action.payload;
     },
-    setSchoolSearchBtn: (state) => {
-      state.schoolSearchBtn = true
+    setSchoolSearchBtn: (state, action: PayloadAction<boolean>) => {
+      state.schoolSearchBtn = action.payload;
     },
     setSchoolName: (state, action: PayloadAction<string>) => {
       state.chooseSchoolName = action.payload;
