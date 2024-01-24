@@ -76,18 +76,14 @@ function SearchSchool() {
     }
   }
 
-  // datepicker를 modal로 띄우게하기
-  const handleDateModal = () => {
-    dispatch(setModalDate());
-    dispatch(setModalOpen());
-    console.log(modalState)
-    console.log(modalState.date)
-  };
+  // datepicker를 modal로 띄우게하는 시도하기
+  // const handleDateModal = () => {
+  //   dispatch(setModalDate());
+  //   dispatch(setModalOpen());
+  // };
 
   const handleDatePicker = () => {
     dispatch(setModalDate());
-    console.log(modalState)
-    console.log(modalState.date)
   }
 
   const handleCityModal = () => {
@@ -97,8 +93,6 @@ function SearchSchool() {
 
   const handleSchoolName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSchool(e.target.value);
-    // dispatch(setInputSchoolName(e.target.value));
-    // console.log(school);
   }
 
   const handleSelectSchool = (name: string, code: string) => {

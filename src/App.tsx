@@ -13,9 +13,6 @@ import { RootState } from "./store/store";
 function App() {
   const modalState = useSelector((state: RootState) => state.modal);
 
-  // const [dateSelect, setModalDate] = useState<string>("");
-  // const [citySelect, setModalCity] = useState<string>("");
-
   useEffect(() => {
     !modalState.modal
       ? (document.body.style.overflowY = "hidden")
@@ -26,7 +23,7 @@ function App() {
     };
   }, [modalState.modal]);
 
-  console.log(modalState.modal);
+  // console.log(modalState.modal);
 
   return (
     <SchoolMeal>
