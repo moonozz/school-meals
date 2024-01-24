@@ -1,9 +1,8 @@
-import React, { useState, Dispatch, SetStateAction } from "react";
+import React, { useState, SetStateAction, useEffect } from "react";
 import styled from "styled-components";
+import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import Calendar from "../components/Calendar";
-import cityCode from "../data/CityCodeKey";
-// import Arrow from "../images/arrow.svg";
 import { ReactComponent as Arrow } from "../images/arrow.svg";
 import {
   setModalCity,
@@ -22,6 +21,40 @@ import { RootState } from "../store/store";
 function SearchSchool() {
   const dispatch = useDispatch();
   const modalState = useSelector((state: RootState) => state.modal);
+  
+  const [school, setSchool] = useState<string>("");
+
+  const handleSchoolSearchBtn = (e?: React.MouseEvent<HTMLButtonElement>) => {
+    if (e) {
+      e.preventDefault(); // 기본 동작 막기
+    }
+
+    if (modalState.cityName.length === 0) {
+      alert("지역을 선택해주세요.")
+    } else if (school.length === 0) {
+      alert("학교명을 입력해주세요.")
+    } else {
+      // search bar에 학교 검색하기
+      // 링크 https://open.neis.go.kr/portal/data/service/selectServicePage.do?page=1&rows=10&sortColumn=&sortDirection=&infId=OPEN17020190531110010104913&infSeq=2
+      axios
+        .get(`https://open.neis.go.kr/hub/schoolInfo?KEY=${process.env.REACT_APP_NICE_API_KEY}&Type=json&pIndex=1&pSize=1000&ATPT_OFCDC_SC_CODE=${modalState.cityCode}&SCHUL_NM=${school}`)
+        .then((res) => {
+          console.log('성공')
+          console.log(res)
+        })
+        .catch((err) => {
+          console.log('실패')
+          console.log(err)
+        })
+    }
+  }
+
+  const handleEnterKeypress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if(e.key === "Enter") {
+      e.preventDefault();
+      handleSchoolSearchBtn()
+    }
+  }
 
   // datepicker를 modal로 띄우게하기
   const handleDateModal = () => {
@@ -44,6 +77,11 @@ function SearchSchool() {
     console.log(modalState.cityName)
   };
 
+  const handleSchoolName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSchool(e.target.value);
+    console.log(school);
+  }
+
   return (
     <SearchSection>
       <h4>궁금한 날짜와 지역, 학교를 검색해주세요!</h4>
@@ -64,17 +102,14 @@ function SearchSchool() {
           </Select>
         </SelectArea>
         <Search>
-          <input placeholder="학교명을 검색해주세요."></input>
-          <button>검색</button>
+          <input placeholder="학교명을 검색해주세요." value={school} onChange={handleSchoolName} onKeyDown={handleEnterKeypress}></input>
+          <button onClick={handleSchoolSearchBtn}>검색</button>
         </Search>
       </SearchForm>
-      <Result>
-        <ul>
-          <li>덕수고등학교</li>
-          <li>덕수고등학교</li>
-          <li>덕수고등학교</li>
-        </ul>
-      </Result>
+      <SchoolSelect>
+        <span>학교를 선택해주세요.</span>
+        <Arrow />
+      </SchoolSelect>
       <Btn>급식 보기</Btn>
     </SearchSection>
   );
@@ -126,7 +161,7 @@ const SelectArea = styled.div`
     gap: 1rem;
   }
   @media ${({ theme }) => theme.desktop} {
-    width: 50%;
+    width: 60%;
   }
 `;
 
@@ -141,6 +176,9 @@ const Select = styled.div`
   @media ${({ theme }) => theme.mobile} {
     margin: 0.8rem 0;
     flex-grow: 1;
+  }
+  @media ${({ theme }) => theme.desktop} {
+    margin: 0;
   }
 `;
 
@@ -169,28 +207,33 @@ const Search = styled.form`
     }
   }
   @media ${({ theme }) => theme.desktop} {
-    width: 50%;
+    width: 40%;
+    margin: 0;
   }
 `;
 
-const Result = styled.div`
+const SchoolSelect = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: ${({ theme }) => theme.color.white};
+  padding: 1.4rem 2.4rem;
   border-radius: 3.2rem;
-  margin-top: 1.6rem;
-  width: 100%;
-  max-width: 120rem;
+  margin: 0.5rem 0;
   font-size: ${({ theme }) => theme.fontSize.xs};
-  ul {
-    padding: 1.6rem 1rem;
-  }
-  li {
-    padding: 1.6rem 2.4rem;
-  }
-  @media ${({ theme }) => theme.tablet} {
+  max-width: 116rem;
+  width: calc(100% - 4.4rem);
+  /* width: 100%; */
+
+  @media ${({ theme }) => theme.mobile} {
+    margin: 0.8rem 0;
+    flex-grow: 1;
     font-size: ${({ theme }) => theme.fontSize.s};
   }
-`;
+  @media ${({theme}) => theme.desktop} {
+    margin-top: 1.6rem;
+  }
+`
 
 const Btn = styled.button`
   width: 100%;
