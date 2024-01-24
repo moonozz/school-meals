@@ -35,4 +35,5 @@ export default Calendar;
 
 const StyledDatePicker = styled(DatePicker) `
   width: 100%;
+  font-size: ${({theme}) => theme.fontSize.s};
 `
