@@ -7,7 +7,10 @@ interface ModalStoreType {
   cityName: string;
   cityCode: string;
   date: Date;
-  schoolCode: string;
+  inputSchoolName: string;
+  schoolSearchBtn: boolean;
+  chooseSchoolName: string;
+  chooseSchoolCode: string;
   // date: string;
 }
 
