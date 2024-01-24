@@ -37,7 +37,8 @@ function SearchSchool() {
       // search bar에 학교 검색하기
       // 링크 https://open.neis.go.kr/portal/data/service/selectServicePage.do?page=1&rows=10&sortColumn=&sortDirection=&infId=OPEN17020190531110010104913&infSeq=2
       axios
-        .get(`https://open.neis.go.kr/hub/schoolInfo?KEY=${process.env.REACT_APP_NICE_API_KEY}&Type=json&pIndex=1&pSize=1000&ATPT_OFCDC_SC_CODE=${modalState.cityCode}&SCHUL_NM=${school}`)
+        .get(`https://open.neis.go.kr/hub/schoolInfo?ATPT_OFCDC_SC_CODE=${modalState.cityCode}&SCHUL_NM=${school}&Type=json&pIndex=1&pSize=100&KEY=${process.env.REACT_APP_NICE_API_KEY}`)
+        // .get(`https://open.neis.go.kr/hub/schoolInfo?KEY=${process.env.REACT_APP_NICE_API_KEY}&Type=json&pIndex=1&pSize=1000&ATPT_OFCDC_SC_CODE=${modalState.cityCode}&SCHUL_NM=${school}`)
         .then((res) => {
           console.log('성공')
           console.log(res)

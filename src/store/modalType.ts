@@ -7,7 +7,7 @@ interface ModalStoreType {
   cityName: string;
   cityCode: string;
   date: Date;
-  schoolName: string;
+  schoolCode: string;
   // date: string;
 }
 
