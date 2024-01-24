@@ -15,14 +15,21 @@ function Calendar() {
   const modalState = useSelector((state: RootState) => state.modal);
 
   const handleDateChange = (date: Date) => {
-    dispatch(setDate(date));
-    console.log(date)
-    console.log(modalState)
+    dispatch(setDate(date.toLocaleDateString()));
+    // console.log(date)
+    // console.log(modalState)
   }
+
+  function isValidDate(dateString: string): boolean {
+    const date = new Date(dateString);
+    return !isNaN(date.getTime());
+  }
+
+  const selectedDate = isValidDate(dateState) ? new Date(dateState) : null;
 
   return (
       <StyledDatePicker
-        selected={dateState}
+        selected={selectedDate}
         onChange={handleDateChange}
         dateFormat="yyyy년 MM월"
         locale={ko}

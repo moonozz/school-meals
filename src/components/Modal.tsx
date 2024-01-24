@@ -47,10 +47,10 @@ function Modal() {
     dispatch(setModalClose());
   }
 
-  const handleDate = (date: Date) => {
-    dispatch(setDate(date))
-    dispatch(setModalClose());
-  }
+  // const handleDate = (date: Date) => {
+  //   dispatch(setDate(date))
+  //   dispatch(setModalClose());
+  // }
 
   return (
     <>

@@ -8,7 +8,8 @@ const initialState: ModalType = {
   modalType: "",
   cityName: "",
   cityCode: "",
-  date: new Date(),
+  date: new Date().toLocaleDateString(),
+  // date: "",
   inputSchoolName: "",
   schoolSearchBtn: false,
   chooseSchoolName: "",
@@ -42,7 +43,8 @@ const ModalSlice = createSlice({
     setCityCode: (state, action: PayloadAction<string>) => {
       state.cityCode = action.payload;
     },
-    setDate: (state, action: PayloadAction<Date>) => {
+    // setDate: (state, action: PayloadAction<Date>) => {
+    setDate: (state, action: PayloadAction<string>) => {
       state.date = action.payload;
     },
     setInputSchoolName: (state, action: PayloadAction<string>) => {
