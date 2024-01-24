@@ -137,10 +137,11 @@ function SearchSchool() {
               {schoolSearchResult.map((item) => {
                 const schoolName = item.SCHUL_NM;
                 const schoolCode = item.SD_SCHUL_CODE;
+                const activeLi = schoolName === modalState.chooseSchoolName
 
                 return (
-                  <li key={schoolCode} onClick={() => {handleSelectSchool(schoolName, schoolCode)}}>
-                    {schoolName}
+                  <li key={schoolCode} className={activeLi ? "activeLi" : ""} onClick={() => {handleSelectSchool(schoolName, schoolCode)}}>
+                    {activeLi? `🟠 ${schoolName}` : schoolName}
                   </li>
                 )
               })}
@@ -294,6 +295,12 @@ const Result = styled.div`
     cursor: pointer;
     &:hover {
       color: ${({theme}) => theme.color.gray100}
+    }
+    &.activeLi {
+      font-weight: 900;
+      &:hover {
+        color: ${({theme}) => theme.color.black}
+      }
     }
   }
 
