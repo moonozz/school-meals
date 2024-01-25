@@ -88,8 +88,9 @@ const AnimationDiv = styled.div`
   position: relative;
   width: 100%;
   height: 36rem;
-  overflow: hidden;
   margin: auto;
+  /* opacity: 0; */
+  overflow: hidden;
 
   @media ${({ theme }) => theme.mobile} {
     height: 48rem;
@@ -181,6 +182,7 @@ const ImgDiv = styled.div`
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  opacity: 0;  
 
   img {
     display: inline-block;
