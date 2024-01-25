@@ -15,7 +15,7 @@ function Calendar() {
   const modalState = useSelector((state: RootState) => state.modal);
 
   const handleDateChange = (date: Date) => {
-    dispatch(setDate(date.toLocaleDateString()));
+    dispatch(setDate(date.toDateString()));
     // console.log(date)
     // console.log(modalState)
   }
