@@ -119,6 +119,7 @@ const Content = styled.div`
   padding: 2rem 3rem 2rem;
   flex-wrap: wrap;
   button {
+    color: ${({ theme }) => theme.color.black};
     font-size: ${({ theme }) => theme.fontSize.xs};
     background-color: ${({ theme }) => theme.color.lightGray};
     padding: 1.4rem 1.6rem;

@@ -72,10 +72,13 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
   
-  .react-datepicker-wrapper {
+  /* .react-datepicker-wrapper {
     width: 100%;
     font-size: ${({theme}) => theme.fontSize.s};
-  }
+    @media ${({ theme }) => theme.mobile} {
+      font-size: ${({theme}) => theme.fontSize.xs} !important;
+    }
+  } */
 
   .react-datepicker__triangle  {
     transform: translate3d(12.2rem, 0px, 0px) !important;
