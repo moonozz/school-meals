@@ -6,7 +6,6 @@ export const GlobalStyle = createGlobalStyle`
 
   html {
     font-size: 62.5%;
-    /* over-flow-x: hidden; */
   }
   body, input, button {
     font-family: 'GmarketSans', sans-serif;
@@ -20,7 +19,6 @@ export const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
   }
   h1, h2 {
-    /* font-weight: normal; */
     margin: 0;
   }
   dl,

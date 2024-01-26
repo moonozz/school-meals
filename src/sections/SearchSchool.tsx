@@ -220,7 +220,6 @@ function SearchSchool() {
                   {resultArr.map((item) => {
                     const mealsDate = item.MLSV_YMD;
                     const mealsArr = item.DDISH_NM.split("<br/>");
-                    const meals = item.DDISH_NM;
                     
                     return (
                       <Meal key={mealsDate}>
@@ -231,7 +230,7 @@ function SearchSchool() {
                               return str.substring(0, str.indexOf(" "))
                             }
                             return (
-                              <li>{mealsSlice(item)}</li>
+                              <li key={item}>{mealsSlice(item)}</li>
                             )
                           })}
                         </ul>

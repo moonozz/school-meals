@@ -51,13 +51,11 @@ function Modal() {
           <Content>
             {cityCodeKey.map((item) => {
               const cityName = Object.keys(item)[0]
-              // const cityNameCode = JSON.stringify(Object.values(item))
               const cityNameCode = Object.values(item)[0]
               const activeBtn = cityNameState === cityName
               
               return (
                 <button className={activeBtn ? "activeBtn" : ""} key={cityNameCode[0]} onClick={() => handleCity(cityName, cityNameCode)}>{cityName}</button>
-                // <button className={activeBtn ? "activeBtn" : ""} key={cityNameCode[0]} >{cityName}</button>
               )
             })}
           </Content>
