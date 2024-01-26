@@ -74,10 +74,16 @@ function SearchSchool() {
       axios
         .get(`https://open.neis.go.kr/hub/schoolInfo?KEY=${process.env.REACT_APP_NICE_API_KEY}&Type=json&pIndex=1&pSize=1000&ATPT_OFCDC_SC_CODE=${modalState.cityCode}&SCHUL_NM=${school}`)
         .then((res) => {
-          const schoolInfoAllData = res.data.schoolInfo[1].row
-          dispatch(setSchoolSearchBtn(true));
-          dispatch(setInputSchoolName(school));
-          setSchoolSearchResult(schoolInfoAllData.length === 0 ? [] : schoolInfoAllData)
+          if (res.data.schoolInfo) {
+            console.log(res);
+            console.log(modalState)
+            const schoolInfoAllData = res.data.schoolInfo[1].row
+            dispatch(setSchoolSearchBtn(true));
+            dispatch(setInputSchoolName(school));
+            setSchoolSearchResult(schoolInfoAllData.length === 0 ? [] : schoolInfoAllData)
+          } else {
+            alert(`${res.data.RESULT.MESSAGE}`)
+          }
         })
         .catch((err) => {
           alert("입력하신 학교명을 다시 확인해주세요.")
