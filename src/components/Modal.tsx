@@ -1,41 +1,26 @@
 import React, { useEffect, SetStateAction } from "react";
 import styled from "styled-components";
-import Calendar from "./Calendar";
 import { useDispatch, useSelector } from "react-redux";
 import cityCodeKey from "../data/CityCodeKey";
 import {
-  setModalCity,
-  setModalDate,
   setModalClose,
   setCityName,
   setCityCode,
-  setDate,
   setSchoolSearchBtn,
   setInputSchoolName,
+  setSchoolCode,
+  setSchoolName,
+  setSearchMeals,
 } from "../store/modalSlice";
 import { RootState } from "../store/store";
-
-// interface Props {
-//   setModalDate: Dispatch<SetStateAction<string>>;
-//   setModalCity: Dispatch<SetStateAction<string>>;
-//   dateSelect: string;
-//   citySelect: string;
-// }
 
 function Modal() {
   const dispatch = useDispatch();
   const modalState = useSelector((state: RootState) => state.modal);
-  // const allState = useSelector((state: RootState) => state.modal.modalType);
   const cityNameState = useSelector((state: RootState) => state.modal.cityName);
-  // const cityCodeState = useSelector((state: RootState) => state.modal.cityCode);
-  // const inputSchool = useSelector((state: RootState) => state.modal.inputSchoolName)
 
   const modalClose = () => {
-    // props.setModal(false);
-    // props.setModalDate(false);
-    // props.setModalCity(false);
     dispatch(setModalClose());
-    console.log(modalState.modal);
   };
 
   const handleCity = (name: string, code: string) => {
@@ -43,15 +28,11 @@ function Modal() {
     dispatch(setCityCode(code));
     dispatch(setInputSchoolName(""))
     dispatch(setSchoolSearchBtn(false))
-    console.log(modalState.schoolSearchBtn);
+    dispatch(setSchoolCode(""))
+    dispatch(setSchoolName(""))
+    dispatch(setSearchMeals(false));
     dispatch(setModalClose());
   }
-
-  // const handleDate = (date: Date) => {
-  //   dispatch(setDate(date))
-  //   dispatch(setModalClose());
-  // }
-
   return (
     <>
       <ModalContainer>
@@ -59,6 +40,7 @@ function Modal() {
           <CloseBtnArea onClick={modalClose} />
         </Header>
         {modalState.modalType === "date" ? (
+          // 다음에 datepicker 를 modal로 띄워봐야지..
           <Content>
             {/* <Calendar /> */}
           </Content>
@@ -90,7 +72,6 @@ function Modal() {
 export default Modal;
 
 const ModalContainer = styled.div`
-  /* position: absolute; */
   position: fixed;
   top: 50%;
   left: 50%;
@@ -101,7 +82,6 @@ const ModalContainer = styled.div`
   border-radius: 3.2rem;
   max-width: 70rem;
   transform: translate(-50%, -50%)
-  /* z-index: 10; */
 `;
 
 const Header = styled.div`
