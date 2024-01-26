@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 
 import styled from "styled-components";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Main from "./sections/Main";
 import SearchSchool from "./sections/SearchSchool";
-import Result from "./sections/Result";
 import Modal from "./components/Modal";
-
 import { RootState } from "./store/store";
 
 function App() {
@@ -23,8 +21,6 @@ function App() {
     };
   }, [modalState.modal]);
 
-  // console.log(modalState.modal);
-
   return (
     <SchoolMeal>
       {modalState.modal ? null : (
@@ -35,7 +31,6 @@ function App() {
       )}
       <Main />
       <SearchSchool />
-      <Result />
     </SchoolMeal>
   );
 }
