@@ -75,8 +75,6 @@ function SearchSchool() {
         .get(`https://open.neis.go.kr/hub/schoolInfo?KEY=${process.env.REACT_APP_NICE_API_KEY}&Type=json&pIndex=1&pSize=1000&ATPT_OFCDC_SC_CODE=${modalState.cityCode}&SCHUL_NM=${school}`)
         .then((res) => {
           if (res.data.schoolInfo) {
-            console.log(res);
-            console.log(modalState)
             const schoolInfoAllData = res.data.schoolInfo[1].row
             dispatch(setSchoolSearchBtn(true));
             dispatch(setInputSchoolName(school));
@@ -119,7 +117,6 @@ function SearchSchool() {
             })
             setResultArr(filterLunch)
           } else {
-            const ErrMsg = "검색결과가 없습니다."
             setResultArr([])
           }
         })
@@ -323,7 +320,10 @@ const Select = styled.div`
 
 const StyledDatePicker = styled(DatePicker) `
   width: 100%;
-  font-size: ${({theme}) => theme.fontSize.s};
+  font-size: ${({theme}) => theme.fontSize.xs};
+  @media ${({ theme }) => theme.mobile} {
+    font-size: ${({theme}) => theme.fontSize.s};
+  }
 `
 
 const Search = styled.form`
