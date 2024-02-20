@@ -41,3 +41,7 @@
 
 ### <span> **Velog** </span>
 [velog 링크](https://velog.io/@moonozz/%EA%B8%89%EC%8B%9D-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8)<br />
+<br />
+<br />
+
+<img src="https://github.com/moonozz/school-meals/assets/94160557/083826cc-84c0-4602-8983-c9397c813c8f"  width="900" height=auto alt="페이지 설명 gif"/>
